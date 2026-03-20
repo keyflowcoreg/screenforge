@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { X402Checkout } from "@/components/x402";
+import { PayNow } from "@/components/paynow";
 
 const fadeUp = {
   initial: { opacity: 0, y: 30 },
@@ -240,9 +240,8 @@ export default function LandingPage() {
       {/* Before / After Preview */}
       <section className="relative z-10 mx-auto max-w-5xl px-6 pb-32">
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="overflow-hidden rounded-2xl border border-[#1e293b] bg-[#0f172a]/60 backdrop-blur"
         >
@@ -319,8 +318,7 @@ export default function LandingPage() {
       <section className="relative z-10 mx-auto max-w-5xl px-6 pb-32">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           className="mb-12 text-center"
         >
@@ -336,9 +334,8 @@ export default function LandingPage() {
           {STEPS.map((step, i) => (
             <motion.div
               key={step.num}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: i * 0.15 }}
               className="group relative rounded-2xl border border-[#1e293b] bg-[#0f172a]/40 p-6 transition-colors hover:border-rose-500/30 hover:bg-[#0f172a]/70"
             >
@@ -365,8 +362,7 @@ export default function LandingPage() {
       <section className="relative z-10 mx-auto max-w-5xl px-6 pb-32">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           className="mb-12 text-center"
         >
@@ -383,8 +379,7 @@ export default function LandingPage() {
             <motion.button
               key={style.name}
               initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
+              animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.4, delay: i * 0.1 }}
               onClick={() => setActiveStyle(i)}
               className={`group relative overflow-hidden rounded-xl border p-4 text-left transition-all ${
@@ -428,8 +423,7 @@ export default function LandingPage() {
       <section className="relative z-10 mx-auto max-w-5xl px-6 pb-32">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           className="mb-12 text-center"
         >
@@ -446,8 +440,7 @@ export default function LandingPage() {
             <motion.div
               key={fmt.device}
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: i * 0.1 }}
               className="rounded-xl border border-[#1e293b] bg-[#0f172a]/40 p-4 text-center"
             >
@@ -468,9 +461,8 @@ export default function LandingPage() {
       {/* Pricing */}
       <section id="pricing" className="relative z-10 mx-auto max-w-3xl px-6 pb-32">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="overflow-hidden rounded-2xl border border-rose-500/20 bg-gradient-to-b from-rose-500/5 to-transparent"
         >
@@ -522,27 +514,16 @@ export default function LandingPage() {
               ))}
             </ul>
 
-            <X402Checkout
-              endpoint="/api/generate"
-              method="POST"
+            <PayNow
               productName="ScreenForge Screenshot Set"
-              price="$19"
+              price={19}
               description="Professional App Store & Play Store screenshot set"
+              onSuccess={() => router.push('/success')}
               accentColor="#f43f5e"
-              onSuccess={(data) => {
-                router.push(
-                  `/success?tx=${data.transactionId || "demo"}&set=${data.setId || "demo"}`
-                );
-              }}
-              onError={(err) => console.error("Payment error:", err)}
-            >
-              <button className="w-full rounded-xl bg-rose-500 py-4 text-base font-bold text-white shadow-lg shadow-rose-500/25 transition-all hover:bg-rose-600 hover:shadow-rose-500/40">
-                Generate My Screenshots &mdash; $19
-              </button>
-            </X402Checkout>
+            />
 
             <p className="mt-4 text-center text-xs text-[#475569]">
-              Paid via USDC on Base. Instant delivery after payment.
+              Card, Apple Pay, or USDC on Base. Instant delivery.
             </p>
           </div>
         </motion.div>
