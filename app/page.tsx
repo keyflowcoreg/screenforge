@@ -4,6 +4,9 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { PayNow } from "@/components/paynow";
+import EmailCapture from "@/components/EmailCapture";
+import { FAQAccordion } from "@/components/FAQAccordion";
+import { SocialShare } from "@/components/SocialShare";
 
 const fadeUp = {
   initial: { opacity: 0, y: 30 },
@@ -529,6 +532,66 @@ export default function LandingPage() {
         </motion.div>
       </section>
 
+      {/* FAQ */}
+      <section className="relative z-10 mx-auto max-w-5xl px-6 pb-32">
+        <FAQAccordion
+          heading="Frequently Asked Questions"
+          items={[
+            {
+              question: 'What screenshot sizes does ScreenForge generate?',
+              answer: 'ScreenForge generates all required App Store sizes (iPhone 6.7", iPhone 6.1", iPad 12.9") and Play Store format (1080x1920). Every image is pixel-perfect and ready to upload.',
+            },
+            {
+              question: 'How many screenshots can I include in one set?',
+              answer: 'Each set includes up to 10 screenshots. You can upload PNG, JPG, or WebP files. AI adds device frames, headlines, and gradient backgrounds to each one.',
+            },
+            {
+              question: 'What style options are available?',
+              answer: 'Four professionally designed presets: Gradient (bold gradients), Minimal (clean & simple), Dark (sleek & modern), and Colorful (eye-catching). Each preset can be customized with your headline text.',
+            },
+            {
+              question: 'Is this a subscription or one-time payment?',
+              answer: 'One-time payment of $19 USDC. No subscription, no recurring charges. You get the full screenshot set with all formats and a commercial license.',
+            },
+            {
+              question: 'What payment methods do you accept?',
+              answer: 'We accept credit/debit cards, Apple Pay, and USDC cryptocurrency via Coinbase Onramp. All payments are processed securely.',
+            },
+            {
+              question: 'Can I use the screenshots commercially?',
+              answer: 'Yes. Every purchase includes a commercial license. Use the generated screenshots for your App Store and Play Store listings, marketing materials, and presentations.',
+            },
+          ]}
+        />
+      </section>
+
+      {/* Social Share */}
+      <section className="relative z-10 mx-auto max-w-5xl px-6 pb-16">
+        <div className="rounded-2xl border border-[#1e293b] bg-[#0f172a]/40 p-6 text-center">
+          <h3 className="mb-2 text-lg font-bold text-white">Share ScreenForge</h3>
+          <p className="mb-4 text-sm text-[#94a3b8]">Know someone who needs better App Store screenshots?</p>
+          <div className="flex justify-center">
+            <SocialShare
+              url="https://screenforge-ten.vercel.app"
+              title="ScreenForge — AI App Store Screenshots in Seconds"
+              description="Upload raw screenshots. AI adds device frames, headlines, gradients. Download App Store-ready images."
+              hashtags={['ScreenForge', 'AppStore', 'ASO']}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Email Capture */}
+      <section className="relative z-10 border-t border-[#1e293b]">
+        <div className="mx-auto max-w-2xl px-6 py-16">
+          <EmailCapture
+            heading="App Store optimization tips"
+            description="Weekly ASO tips and screenshot design trends."
+            accentColor="#f43f5e"
+          />
+        </div>
+      </section>
+
       {/* Cross-sell */}
       <section className="relative z-10 border-t border-[#1e293b] bg-[#0f172a]/30">
         <div className="mx-auto max-w-5xl px-6 py-20">
@@ -567,10 +630,40 @@ export default function LandingPage() {
 
       {/* Footer */}
       <footer className="relative z-10 border-t border-[#1e293b] py-8">
-        <div className="mx-auto max-w-5xl px-6 text-center">
-          <p className="text-sm text-[#475569]">
-            &copy; {new Date().getFullYear()} ScreenForge. Built for indie developers who ship.
-          </p>
+        <div className="mx-auto max-w-5xl px-6">
+          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
+            <div className="flex items-center gap-2">
+              <div className="flex h-6 w-6 items-center justify-center rounded-md bg-rose-500/15">
+                <svg
+                  className="h-3 w-3 text-rose-400"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                  />
+                </svg>
+              </div>
+              <span className="text-sm font-bold text-white">ScreenForge</span>
+            </div>
+            <div className="flex items-center gap-6 text-xs text-[#64748b]">
+              <a href="/privacy" className="transition-colors hover:text-white">Privacy Policy</a>
+              <span>|</span>
+              <a href="/terms" className="transition-colors hover:text-white">Terms of Service</a>
+              <span>|</span>
+              <button
+                type="button"
+                onClick={() => window.dispatchEvent(new Event('open-cookie-banner'))}
+                className="transition-colors hover:text-white cursor-pointer"
+              >
+                Cookie Settings
+              </button>
+            </div>
+          </div>
         </div>
       </footer>
     </div>
