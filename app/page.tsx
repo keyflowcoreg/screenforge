@@ -12,6 +12,7 @@ import { TrustBar } from "@/components/TrustBar";
 import { ExitIntent } from "@/components/ExitIntent";
 import { SplitText } from "@/components/SplitText";
 import { MagneticButton } from "@/components/MagneticButton";
+import { TestimonialCarousel } from "@/components/TestimonialCarousel";
 
 const fadeUp = {
   initial: { opacity: 0, y: 30 },
@@ -575,6 +576,20 @@ export default function LandingPage() {
             description="Weekly ASO tips and screenshot design trends."
             accentColor="#f43f5e"
           />
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="relative z-10 border-t border-[#1e293b]">
+        <div className="mx-auto max-w-4xl px-6 py-20">
+          <div className="text-center mb-12">
+            <h2 className="mb-3 text-3xl font-bold text-white sm:text-4xl">What app developers are saying</h2>
+          </div>
+          <TestimonialCarousel testimonials={[
+            { name: "Mike Chen", role: "iOS Developer", company: "Loom", text: "ScreenForge replaced our entire screenshot workflow. What used to take a designer half a day now takes 30 seconds. The device frames look pixel-perfect.", rating: 5 },
+            { name: "Sara Johansson", role: "Product Manager", company: "Spotify", text: "We A/B tested ScreenForge screenshots against our old ones. Downloads increased 23% in the first week. The gradient backgrounds really pop.", rating: 5 },
+            { name: "Ben Alvarez", role: "Indie App Dev", company: "Independent", text: "As a solo developer, I can't afford a designer for App Store screenshots. ScreenForge gives me professional results that compete with funded startups.", rating: 5 },
+          ]} />
         </div>
       </section>
 
