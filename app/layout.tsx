@@ -49,27 +49,19 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.className} dark`}>
       <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "SoftwareApplication",
-              name: "ScreenForge",
-              description:
-                "Upload your app screenshots. AI generates professional App Store and Play Store images with device frames, text, and gradients.",
-              url: "https://screenforge.ai",
-              applicationCategory: "DesignApplication",
-              operatingSystem: "Web",
-              offers: {
-                "@type": "Offer",
-                price: "19",
-                priceCurrency: "USD",
-                availability: "https://schema.org/InStock",
-              },
-            }),
-          }}
-        />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "SoftwareApplication",
+          "name": "ScreenForge",
+          "description": "App Store screenshot generator",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "Web",
+          "offers": {
+            "@type": "Offer",
+            "price": "19",
+            "priceCurrency": "USD"
+          }
+        }) }} />
       </head>
       <body className="min-h-screen bg-background text-foreground antialiased">
         <Analytics product="screenforge" />
