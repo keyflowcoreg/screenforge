@@ -8,6 +8,10 @@ import EmailCapture from "@/components/EmailCapture";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { SocialShare } from "@/components/SocialShare";
 import { EcosystemFooter } from "@/components/EcosystemFooter";
+import { TrustBar } from "@/components/TrustBar";
+import { ExitIntent } from "@/components/ExitIntent";
+import { SplitText } from "@/components/SplitText";
+import { MagneticButton } from "@/components/MagneticButton";
 
 const fadeUp = {
   initial: { opacity: 0, y: 30 },
@@ -172,18 +176,10 @@ export default function LandingPage() {
           AI-powered screenshot generator
         </motion.div>
 
-        <motion.h1
-          variants={fadeUp}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="mb-6 text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl md:text-6xl"
-        >
-          Your app deserves better
-          <br />
-          screenshots.{" "}
-          <span className="bg-gradient-to-r from-rose-400 to-rose-500 bg-clip-text text-transparent">
-            Get them in 30 seconds.
-          </span>
-        </motion.h1>
+        <h1 className="mb-6 text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl md:text-6xl">
+          <SplitText text="Your app deserves better screenshots." className="justify-center" delay={0.1} />
+          <SplitText text="Get them in 30 seconds." className="justify-center bg-gradient-to-r from-rose-400 to-rose-500 bg-clip-text text-transparent" delay={0.4} />
+        </h1>
 
         <motion.p
           variants={fadeUp}
@@ -198,9 +194,9 @@ export default function LandingPage() {
           variants={fadeUp}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          <a
-            href="#pricing"
-            className="inline-flex items-center gap-2 rounded-full bg-rose-500 px-8 py-4 text-base font-bold text-white shadow-lg shadow-rose-500/25 transition-all hover:bg-rose-600 hover:shadow-rose-500/40"
+          <MagneticButton
+            onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
+            className="inline-flex items-center gap-2 rounded-full bg-rose-500 px-8 py-4 text-base font-bold text-white shadow-lg shadow-rose-500/25 transition-all hover:bg-rose-600 hover:shadow-rose-500/40 cursor-pointer"
           >
             Generate Screenshots
             <svg
@@ -216,9 +212,19 @@ export default function LandingPage() {
                 d="M17 8l4 4m0 0l-4 4m4-4H3"
               />
             </svg>
-          </a>
+          </MagneticButton>
         </motion.div>
       </motion.section>
+
+      {/* TrustBar */}
+      <div className="relative z-10 mx-auto max-w-5xl px-6">
+        <TrustBar items={[
+          { label: 'Screenshots', value: 2000, suffix: '+' },
+          { label: 'Devices', value: 3 },
+          { label: 'Styles', value: 4 },
+          { label: 'Formats', value: 4 },
+        ]} />
+      </div>
 
       {/* Before / After Preview */}
       <section className="relative z-10 mx-auto max-w-5xl px-6 pb-32">
@@ -573,6 +579,12 @@ export default function LandingPage() {
       </section>
 
       <EcosystemFooter currentProduct="ScreenForge" />
+
+      <ExitIntent
+        heading="Free screenshot mockup"
+        description="Try one device frame free."
+        ctaText="Get free mockup"
+      />
     </div>
   );
 }
