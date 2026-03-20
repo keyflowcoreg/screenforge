@@ -7,6 +7,7 @@ import { PayNow } from "@/components/paynow";
 import EmailCapture from "@/components/EmailCapture";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { SocialShare } from "@/components/SocialShare";
+import { EcosystemFooter } from "@/components/EcosystemFooter";
 
 const fadeUp = {
   initial: { opacity: 0, y: 30 },
@@ -113,27 +114,6 @@ const FORMATS = [
   { device: 'iPhone 6.1"', size: "1179 x 2556", use: "App Store" },
   { device: 'iPad 12.9"', size: "2048 x 2732", use: "App Store" },
   { device: "Play Store", size: "1080 x 1920", use: "Google Play" },
-];
-
-const CROSS_SELL = [
-  {
-    name: "PromptForge",
-    desc: "500+ production-grade AI prompts",
-    price: "$19",
-    href: "https://promptforge.app",
-  },
-  {
-    name: "PageForge",
-    desc: "AI landing pages in 60 seconds",
-    price: "$49/mo",
-    href: "https://pageforge.dev",
-  },
-  {
-    name: "Veloce Kit",
-    desc: "Ship your first AI product in 48h",
-    price: "$247",
-    href: "https://velocekit.com",
-  },
 ];
 
 export default function LandingPage() {
@@ -592,80 +572,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Cross-sell */}
-      <section className="relative z-10 border-t border-[#1e293b] bg-[#0f172a]/30">
-        <div className="mx-auto max-w-5xl px-6 py-20">
-          <div className="mb-10 text-center">
-            <p className="mb-2 text-xs font-medium uppercase tracking-wider text-[#64748b]">
-              From the makers of ScreenForge
-            </p>
-            <h3 className="text-2xl font-bold text-white">
-              More tools to ship faster
-            </h3>
-          </div>
-
-          <div className="grid gap-4 md:grid-cols-3">
-            {CROSS_SELL.map((product) => (
-              <a
-                key={product.name}
-                href={product.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group rounded-xl border border-[#1e293b] bg-[#0f172a]/40 p-5 transition-colors hover:border-rose-500/20 hover:bg-[#0f172a]/70"
-              >
-                <div className="mb-2 flex items-center justify-between">
-                  <span className="text-sm font-bold text-white group-hover:text-rose-400 transition-colors">
-                    {product.name}
-                  </span>
-                  <span className="rounded-full bg-rose-500/10 px-2.5 py-0.5 text-xs font-semibold text-rose-400">
-                    {product.price}
-                  </span>
-                </div>
-                <p className="text-sm text-[#94a3b8]">{product.desc}</p>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="relative z-10 border-t border-[#1e293b] py-8">
-        <div className="mx-auto max-w-5xl px-6">
-          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
-            <div className="flex items-center gap-2">
-              <div className="flex h-6 w-6 items-center justify-center rounded-md bg-rose-500/15">
-                <svg
-                  className="h-3 w-3 text-rose-400"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                  />
-                </svg>
-              </div>
-              <span className="text-sm font-bold text-white">ScreenForge</span>
-            </div>
-            <div className="flex items-center gap-6 text-xs text-[#64748b]">
-              <a href="/privacy" className="transition-colors hover:text-white">Privacy Policy</a>
-              <span>|</span>
-              <a href="/terms" className="transition-colors hover:text-white">Terms of Service</a>
-              <span>|</span>
-              <button
-                type="button"
-                onClick={() => window.dispatchEvent(new Event('open-cookie-banner'))}
-                className="transition-colors hover:text-white cursor-pointer"
-              >
-                Cookie Settings
-              </button>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <EcosystemFooter currentProduct="ScreenForge" />
     </div>
   );
 }
