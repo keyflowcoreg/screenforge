@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Analytics } from "@/components/Analytics";
 import { CookieBanner } from "@/components/CookieBanner";
+import { NoiseOverlay } from "@/components/NoiseOverlay";
+import { AnnouncementBar } from "@/components/AnnouncementBar";
 import "./globals.css";
 
 const inter = Inter({
@@ -23,17 +25,19 @@ export const metadata: Metadata = {
     "AI screenshots",
   ],
   openGraph: {
-    title: "ScreenForge — AI App Store Screenshots in Seconds",
+    title: "ScreenForge — App Store Screenshot Generator",
     description:
-      "Upload raw screenshots. AI adds device frames, headlines, gradients. Download App Store-ready images.",
+      "Professional App Store and Play Store screenshots with AI",
     type: "website",
     siteName: "ScreenForge",
+    images: [{ url: "/api/og", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "ScreenForge — AI App Store Screenshots in Seconds",
+    title: "ScreenForge — App Store Screenshot Generator",
     description:
-      "Upload raw screenshots. AI adds device frames, headlines, gradients. Download App Store-ready images.",
+      "Professional App Store and Play Store screenshots with AI",
+    images: ["/api/og"],
   },
   robots: {
     index: true,
@@ -64,6 +68,8 @@ export default function RootLayout({
         }) }} />
       </head>
       <body className="min-h-screen bg-background text-foreground antialiased">
+        <NoiseOverlay />
+        <AnnouncementBar items={['LAUNCH WEEK \u2014 Limited time pricing', 'App Store screenshots done right \u2014 $19 per set']} />
         <Analytics product="screenforge" />
         {children}
         <CookieBanner />
