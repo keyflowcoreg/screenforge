@@ -127,8 +127,9 @@ export default function LandingPage() {
 
   return (
     <div className="relative min-h-screen overflow-hidden">
-      {/* Background glow */}
-      <div className="pointer-events-none fixed inset-0 overflow-hidden">
+      {/* Background glow — app store feel */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(244,63,94,0.06)_0%,_transparent_60%)]" />
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 left-1/2 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-rose-500/8 blur-[120px]" />
         <div className="absolute -bottom-40 right-0 h-[400px] w-[400px] rounded-full bg-purple-500/6 blur-[100px]" />
       </div>
@@ -214,6 +215,60 @@ export default function LandingPage() {
               />
             </svg>
           </MagneticButton>
+        </motion.div>
+
+        {/* Floating device frames */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="relative z-10 mx-auto mt-16 flex max-w-2xl items-end justify-center gap-4"
+        >
+          {/* iPad frame */}
+          <div className="hidden w-44 rounded-2xl border-2 border-zinc-700/50 bg-zinc-900/80 p-1.5 shadow-xl shadow-black/40 sm:block">
+            <div className="overflow-hidden rounded-xl bg-gradient-to-br from-rose-500/10 via-zinc-900 to-purple-500/10">
+              <div className="p-2 space-y-1.5">
+                <div className="h-2 w-12 rounded bg-rose-500/20" />
+                <div className="h-14 rounded bg-zinc-800/50" />
+                <div className="h-1.5 w-full rounded bg-zinc-800/40" />
+                <div className="h-1.5 w-3/4 rounded bg-zinc-800/30" />
+                <div className="flex gap-1.5 mt-1">
+                  <div className="h-4 w-10 rounded bg-rose-500/20" />
+                  <div className="h-4 w-10 rounded bg-zinc-800/40" />
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* iPhone frame — primary */}
+          <div className="w-36 rounded-[1.5rem] border-2 border-zinc-600/50 bg-zinc-900/90 p-1 shadow-2xl shadow-rose-500/10">
+            <div className="mx-auto mb-0.5 h-2.5 w-14 rounded-full bg-zinc-800" />
+            <div className="overflow-hidden rounded-2xl bg-gradient-to-br from-rose-500/15 via-zinc-900 to-indigo-500/10">
+              <div className="p-2 space-y-1.5">
+                <div className="h-2 w-10 rounded bg-rose-500/25" />
+                <div className="h-16 rounded bg-zinc-800/50" />
+                <div className="h-1.5 w-full rounded bg-zinc-800/40" />
+                <div className="h-1.5 w-2/3 rounded bg-zinc-800/30" />
+                <div className="flex gap-1.5 mt-1">
+                  <div className="h-4 w-8 rounded bg-rose-500/25" />
+                  <div className="h-4 w-8 rounded bg-zinc-800/40" />
+                </div>
+              </div>
+            </div>
+            <div className="mx-auto mt-0.5 h-1 w-10 rounded-full bg-zinc-700" />
+          </div>
+          {/* iPhone frame — secondary */}
+          <div className="hidden w-32 rounded-[1.3rem] border-2 border-zinc-700/40 bg-zinc-900/70 p-1 shadow-xl shadow-black/30 sm:block opacity-75">
+            <div className="mx-auto mb-0.5 h-2 w-12 rounded-full bg-zinc-800" />
+            <div className="overflow-hidden rounded-xl bg-gradient-to-br from-amber-500/10 via-zinc-900 to-rose-500/10">
+              <div className="p-1.5 space-y-1">
+                <div className="h-1.5 w-8 rounded bg-amber-500/20" />
+                <div className="h-12 rounded bg-zinc-800/40" />
+                <div className="h-1 w-full rounded bg-zinc-800/30" />
+                <div className="h-1 w-1/2 rounded bg-zinc-800/20" />
+              </div>
+            </div>
+            <div className="mx-auto mt-0.5 h-0.5 w-8 rounded-full bg-zinc-700" />
+          </div>
         </motion.div>
       </motion.section>
 
@@ -327,7 +382,7 @@ export default function LandingPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: i * 0.15 }}
-              className="group relative rounded-2xl border border-[#1e293b] bg-[#0f172a]/40 p-6 transition-colors hover:border-rose-500/30 hover:bg-[#0f172a]/70"
+              className="group relative rounded-3xl border border-[#1e293b] bg-[#0f172a]/40 p-6 transition-all hover:border-rose-500/30 hover:bg-[#0f172a]/70 hover:shadow-lg hover:shadow-rose-500/5"
             >
               <div className="mb-4 flex items-center gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-rose-500/10 text-rose-400 transition-colors group-hover:bg-rose-500/20">
@@ -432,7 +487,7 @@ export default function LandingPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: i * 0.1 }}
-              className="rounded-xl border border-[#1e293b] bg-[#0f172a]/40 p-4 text-center"
+              className="rounded-2xl border border-[#1e293b] bg-[#0f172a]/40 p-4 text-center transition-all hover:border-rose-500/20 hover:shadow-md hover:shadow-rose-500/5"
             >
               <div className="mb-2 text-sm font-semibold text-white">
                 {fmt.device}
